@@ -11,4 +11,11 @@ public class DonationService {
     public DonationService(DonationRepository donationRepository) {
         this.donationRepository = donationRepository;
     }
+
+    public Integer getNumberOfBags() {
+        return donationRepository.getNumberOfBags();
+    }
+    public Integer getNumberOfDonations() {
+        return donationRepository.getNumberOfDonations();
+    }
 }
