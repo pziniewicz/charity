@@ -25,7 +25,7 @@ public class Donation {
     @ManyToMany
     private List<Category> categories;
 
-    @OneToOne
+    @ManyToOne
     private Institution institution;
 
     private String street;
