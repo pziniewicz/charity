@@ -22,11 +22,11 @@ public class Donation {
 
     private Integer quantity;
 
-//    @ManyToMany
-//    private List<Category> categories;
-//
-//    @OneToOne
-//    private Institution institution;
+    @ManyToMany
+    private List<Category> categories;
+
+    @ManyToOne
+    private Institution institution;
 
     private String street;
 

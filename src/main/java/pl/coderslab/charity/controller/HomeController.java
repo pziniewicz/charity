@@ -19,7 +19,6 @@ public class HomeController {
         this.institutionService = institutionService;
     }
 
-
     @RequestMapping("/")
     public String homeAction(Model model){
         List<Institution> institutions = institutionService.findAll();
