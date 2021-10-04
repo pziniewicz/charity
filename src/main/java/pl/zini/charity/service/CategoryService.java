@@ -1,8 +1,8 @@
-package pl.coderslab.charity.service;
+package pl.zini.charity.service;
 
 import org.springframework.stereotype.Service;
-import pl.coderslab.charity.model.Category;
-import pl.coderslab.charity.repository.CategoryRepository;
+import pl.zini.charity.model.Category;
+import pl.zini.charity.repository.CategoryRepository;
 
 import java.util.List;
 

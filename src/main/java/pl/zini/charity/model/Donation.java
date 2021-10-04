@@ -1,6 +1,5 @@
-package pl.coderslab.charity.model;
+package pl.zini.charity.model;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

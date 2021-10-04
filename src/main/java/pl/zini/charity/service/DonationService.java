@@ -1,8 +1,8 @@
-package pl.coderslab.charity.service;
+package pl.zini.charity.service;
 
 import org.springframework.stereotype.Service;
-import pl.coderslab.charity.model.Donation;
-import pl.coderslab.charity.repository.DonationRepository;
+import pl.zini.charity.model.Donation;
+import pl.zini.charity.repository.DonationRepository;
 
 @Service
 public class DonationService {
@@ -16,6 +16,7 @@ public class DonationService {
     public Integer getNumberOfBags() {
         return donationRepository.getNumberOfBags();
     }
+
     public Integer getNumberOfDonations() {
         return donationRepository.getNumberOfDonations();
     }

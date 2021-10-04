@@ -1,4 +1,4 @@
-package pl.coderslab.charity.controller;
+package pl.zini.charity.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.coderslab.charity.model.Category;
-import pl.coderslab.charity.model.Donation;
-import pl.coderslab.charity.model.Institution;
-import pl.coderslab.charity.service.CategoryService;
-import pl.coderslab.charity.service.DonationService;
-import pl.coderslab.charity.service.InstitutionService;
+import pl.zini.charity.model.Category;
+import pl.zini.charity.model.Donation;
+import pl.zini.charity.model.Institution;
+import pl.zini.charity.service.CategoryService;
+import pl.zini.charity.service.DonationService;
+import pl.zini.charity.service.InstitutionService;
 
 import java.util.List;
 
