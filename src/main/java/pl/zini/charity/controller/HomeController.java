@@ -1,11 +1,11 @@
-package pl.coderslab.charity.controller;
+package pl.zini.charity.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.coderslab.charity.model.Institution;
-import pl.coderslab.charity.service.DonationService;
-import pl.coderslab.charity.service.InstitutionService;
+import pl.zini.charity.model.Institution;
+import pl.zini.charity.service.DonationService;
+import pl.zini.charity.service.InstitutionService;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class HomeController {
     }
 
     @RequestMapping("/")
-    public String homeAction(Model model){
+    public String homeAction(Model model) {
         List<Institution> institutions = institutionService.findAll();
         model.addAttribute("institutions", institutions);
         Integer nrOfBags = donationService.getNumberOfBags();
