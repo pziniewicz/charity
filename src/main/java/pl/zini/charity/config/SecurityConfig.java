@@ -27,10 +27,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(new BCryptPasswordEncoder())
                 .dataSource(dataSource)
                 .usersByUsernameQuery("select email, password, enabled "
-                        + "from users "
+                        + "from user "
                         + "where email = ?;")
-                .authoritiesByUsernameQuery("SELECT email, role  FROM users "
-                        + "WHERE u.email = ?;");
+                .authoritiesByUsernameQuery("SELECT email, role  FROM user "
+                        + "WHERE email = ?;");
     }
 
     @Override
@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/resources/", "/resources/**").permitAll()
-                .antMatchers("register").permitAll()
+                .antMatchers("/register").permitAll()
                 .antMatchers("/login", "/login/**").permitAll()
                 .antMatchers("/admin/", "/admin/**").hasAuthority("ROLE_ADMIN")
                 .antMatchers("/user/", "/user/**").hasAuthority("ROLE_USER")
@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .loginPage("/login")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/login", true)
+                .defaultSuccessUrl("/user", true)
                 .and()
                 .logout()
                 .logoutUrl("/logout")

@@ -5,15 +5,15 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <jsp:include page="common/head.jsp"/>
+    <nav class="container container--70">
+
+        <jsp:include page="../common/header.jsp"/>
+    </nav>
     <title>Document</title>
 </head>
 <body>
 <header class="header--main-page">
-    <nav class="container container--70">
-        <jsp:include page="common/loggedout.jsp"/>
-        <jsp:include page="common/header.jsp"/>
-    </nav>
+    <jsp:include page="../common/header.jsp"/>
     <div class="slogan container container--90">
         <div class="slogan--item">
             <h1>
@@ -113,6 +113,6 @@
 
 </section>
 
-<jsp:include page="common/footer.jsp"/>
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>
