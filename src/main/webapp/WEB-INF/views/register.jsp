@@ -13,7 +13,7 @@
 <body>
 <header class="header--main-page">
     <nav class="container container--70">
-        <jsp:include page="components/loggedout.jsp"/>
+        <jsp:include page="components/navuser.jsp"/>
         <jsp:include page="components/header.jsp"/>
     </nav>
     <section class="login-page">
