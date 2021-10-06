@@ -14,12 +14,9 @@ import javax.persistence.Id;
 @Setter
 @Getter
 @ToString
+@EqualsAndHashCode
 @Entity
-public class Category {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Category extends BaseClass{
 
     private String name;
 }
