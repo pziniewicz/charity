@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @Entity
 public class Institution extends BaseClass{
 
