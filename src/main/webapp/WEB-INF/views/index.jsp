@@ -5,14 +5,14 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <jsp:include page="common/head.jsp"/>
+    <jsp:include page="/components/head.jsp"/>
     <title>Document</title>
 </head>
 <body>
 <header class="header--main-page">
     <nav class="container container--70">
-        <jsp:include page="common/loggedout.jsp"/>
-        <jsp:include page="common/header.jsp"/>
+        <jsp:include page="/components/loggedout.jsp"/>
+        <jsp:include page="/components/header.jsp"/>
     </nav>
     <div class="slogan container container--90">
         <div class="slogan--item">
@@ -78,9 +78,9 @@
         <h2>O nas</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
             optio esse quisquam illo omnis.</p>
-        <img src="<c:url value="resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
+        <img src="<c:url value="/resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
     </div>
-    <div class="about-us--image"><img src="<c:url value="resources/images/about-us.jpg"/>" alt="People in circle"/>
+    <div class="about-us--image"><img src="<c:url value="/resources/images/about-us.jpg"/>" alt="People in circle"/>
     </div>
 </section>
 
@@ -113,6 +113,6 @@
 
 </section>
 
-<jsp:include page="common/footer.jsp"/>
+<jsp:include page="/components/footer.jsp"/>
 </body>
 </html>
