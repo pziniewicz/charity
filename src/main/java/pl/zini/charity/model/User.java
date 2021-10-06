@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 @ToString(exclude = "password")
 @EqualsAndHashCode(callSuper = true)
 @Entity
-public class User extends BaseClass{
+public class User extends BaseClass {
 
     private String firstName;
     private String lastName;
@@ -21,5 +21,7 @@ public class User extends BaseClass{
     private String role;
     private Boolean enabled;
 
-
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 }

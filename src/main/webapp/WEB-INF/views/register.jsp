@@ -21,7 +21,7 @@
         <form:form modelAttribute="user" method="post" htmlEscape="true">
             <div class="form-group">
                 <form:label path="firstName"><spring:message code="user.firstName"/> </form:label><br>
-                <form:input path="firstName" placeholder="Imię"/>
+                <form:input path="firstName" placeholder="Imię" />
                 <form:errors path="firstName"/>
             </div>
             <div class="form-group">
