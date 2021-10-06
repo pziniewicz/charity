@@ -11,6 +11,7 @@
 <body>
 <header class="header--main-page">
     <nav class="container container--70">
+        <jsp:include page="../components/loggedin.jsp"/>
         <jsp:include page="../components/header.jsp"/>
     </nav>
     <div class="slogan container container--90">
