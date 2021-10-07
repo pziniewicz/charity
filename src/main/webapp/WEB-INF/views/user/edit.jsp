@@ -6,19 +6,19 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <jsp:include page="components/head.jsp"/>
+    <jsp:include page="../components/head.jsp"/>
     <title>Document</title>
 </head>
 
 <body>
 <header class="header--main-page">
     <nav class="container container--70">
-        <jsp:include page="components/navuser.jsp"/>
-        <jsp:include page="components/header.jsp"/>
+        <jsp:include page="../components/navuser.jsp"/>
+        <jsp:include page="../components/header.jsp"/>
     </nav>
     <section class="login-page">
-        <h2><spring:message code="pages.navbar.button.register"/> </h2>
-        <form:form modelAttribute="user" method="post" htmlEscape="true">
+        <h2><spring:message code="user.edit.title"/> </h2>
+        <form:form modelAttribute="loggedUser" method="post" htmlEscape="true">
             <div class="form-group">
                 <form:label path="firstName"><spring:message code="user.firstName"/> </form:label><br>
                 <form:input path="firstName" placeholder="Imię" />
@@ -41,13 +41,12 @@
             </div>
 
             <div class="form-group form-group--buttons">
-                <button class="btn" type="submit"><spring:message code="pages.navbar.button.register"/></button>
-                <a href="/login" class="btn btn--without-border"><spring:message code="pages.navbar.button.login"/></a>
+                <button class="btn" type="submit"><spring:message code="user.edit.title"/></button>
             </div>
         </form:form>
     </section>
 </header>
 
-<jsp:include page="components/footer.jsp"/>
+<jsp:include page="../components/footer.jsp"/>
 </body>
 </html>
