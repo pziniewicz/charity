@@ -11,11 +11,12 @@
 </head>
 
 <body>
-<header class="header--main-page">
+<header class="header">
     <nav class="container container--70">
         <jsp:include page="components/navuser.jsp"/>
         <jsp:include page="components/header.jsp"/>
     </nav>
+</header>
     <section class="login-page">
         <h2><spring:message code="pages.navbar.button.login"/></h2>
         <form method="post" action="/login">
@@ -39,7 +40,7 @@
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
     </section>
-</header>
+
 
 <jsp:include page="components/footer.jsp"/>
 </body>
