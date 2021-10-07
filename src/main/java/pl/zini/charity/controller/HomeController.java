@@ -1,9 +1,11 @@
 package pl.zini.charity.controller;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.zini.charity.model.Institution;
@@ -27,6 +29,13 @@ public class HomeController {
         this.institutionService = institutionService;
         this.donationService = donationService;
         this.userService = userService;
+    }
+
+    @ModelAttribute("loggedUser")
+    public User loggedUser() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.findUserByEmail(email);
+        return user;
     }
 
     @RequestMapping("/")
