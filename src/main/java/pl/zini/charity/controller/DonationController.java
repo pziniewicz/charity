@@ -1,5 +1,6 @@
 package pl.zini.charity.controller;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.zini.charity.model.Category;
 import pl.zini.charity.model.Donation;
 import pl.zini.charity.model.Institution;
+import pl.zini.charity.model.User;
+import pl.zini.charity.repository.UserRepository;
 import pl.zini.charity.service.CategoryService;
 import pl.zini.charity.service.DonationService;
 import pl.zini.charity.service.InstitutionService;
+import pl.zini.charity.service.UserService;
 
 import java.util.List;
 
@@ -23,11 +27,13 @@ public class DonationController {
     private final DonationService donationService;
     private final InstitutionService institutionService;
     private final CategoryService categoryService;
+    private final UserService userService;
 
-    public DonationController(DonationService donationService, InstitutionService institutionService, CategoryService categoryService) {
+    public DonationController(DonationService donationService, InstitutionService institutionService, CategoryService categoryService, UserService userService) {
         this.donationService = donationService;
         this.institutionService = institutionService;
         this.categoryService = categoryService;
+        this.userService = userService;
     }
 
     @ModelAttribute("donation")
@@ -45,18 +51,25 @@ public class DonationController {
         return categoryService.findAll();
     }
 
+    @ModelAttribute
+    public User loggedUser() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.findUserByEmail(email);
+        return user;
+    }
+
     @GetMapping
     public String addDonation() {
-        return "form";
+        return "user/form";
     }
 
     @PostMapping
     public String addDonation(@ModelAttribute("donation") Donation donation, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "form";
+            return "user/form";
         }
         donationService.save(donation);
-        return "redirect:/";
+        return "user/form-confirmation";
     }
 
 

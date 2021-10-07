@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <a href="/register" class="btn btn--large"><spring:message code="pages.navbar.button.register"/></a>
 </section>
 
 <section class="about-us">
