@@ -6,7 +6,7 @@
 
 <ul class="nav--actions">
   <c:if test="${not empty loggedUser}">
-    <security:authorize access="hasRole('ROLE_USER')">
+    <security:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
       <li><spring:message code="user.welcome"/>,  <b><a href="/user/edit" class="btn btn--small btn--without-border">
           ${loggedUser.fullName}</a></b></li>
     </security:authorize>
