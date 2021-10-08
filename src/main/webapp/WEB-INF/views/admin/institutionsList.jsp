@@ -8,23 +8,6 @@
 <head>
   <jsp:include page="../components/head.jsp"/>
   <title>Document</title>
-  <style>
-    table {
-      display: table;
-      border-collapse: separate;
-      box-sizing: border-box;
-      text-indent: initial;
-      border-spacing: 2px;
-      border-color: grey;
-    }
-    td, th {
-      text-align: left;
-      padding: 8px;
-    }
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-  </style>
 </head>
 
 <body>

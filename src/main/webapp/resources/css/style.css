@@ -22,6 +22,7 @@ html {
 /* line 23, scss/vendor/_normalize.scss */
 body {
   margin: 0;
+  font-size: 1.6rem;
 }
 
 /**
@@ -1087,6 +1088,23 @@ header nav ul {
   display: -ms-flexbox;
   display: flex;
   font-size: 1.8rem;
+}
+
+table {
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing: 2px;
+  border-color: grey;
+  font-size: 1.8rem;
+}
+td, th {
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
 
 /* line 16, scss/modules/_navigation.scss */
