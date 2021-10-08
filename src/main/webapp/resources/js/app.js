@@ -178,13 +178,13 @@ document.addEventListener("DOMContentLoaded", function () {
 function data() {
     let categoryArray = [];
     $('.categoriesList').each(function () {
-        categoryArray.push($(this).innerText);
+        categoryArray.push($(this).val());
     });
     let categoriesSelected = " ";
     $('.categoriesList:checked').each(function () {
         categoriesSelected += categoryArray[$(this).val() - 1] + " ";
     });
-    let institutionName = $('.institutionsList:checked').innerText;
+    let institutionName = $('.institutionsList:checked').val();
     $('#categoryToDisplay').text(categoriesSelected);
     let bags = $('#bags').val();
     $('#bagNumber').text('Liczba worków: ' + bags + ' Kategorie: ');

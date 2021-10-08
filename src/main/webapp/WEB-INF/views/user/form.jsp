@@ -90,9 +90,10 @@
                 <c:forEach items="${categories}" var="category">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="checkbox" name="category" value="${category.name}"/>
+                            <input type="checkbox" name="category" value="${category.id}"/>
                             <span class="checkbox"></span>
-                            <span class="description" class="categoriesList">${category.name}</span>
+                            <span class="description" >${category.name}</span>
+                            <input type="hidden" class="categoriesList" value="${category.name}">
                         </label>
                     </div>
                 </c:forEach>
@@ -129,12 +130,13 @@
                 <c:forEach items="${institutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="radio" name="institutions"  value="${institution.name}" />
+                            <input type="radio" name="institutions"  value="${institution.id}" />
                             <span class="checkbox radio"></span>
                             <span class="description">
-                                  <div class="title" class="institutionsList">${institution.name}</div>
+                                  <div class="title">${institution.name}</div>
                                   <div class="subtitle">${institution.description}</div>
                             </span>
+                            <input type="hidden" class="institutionsList" value="${institution.name}">
                         </label>
                     </div>
                 </c:forEach>
