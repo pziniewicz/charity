@@ -14,41 +14,7 @@
             src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous"></script>
-    <script>
-    function data() {
-    // Pobranie nazwy wybranych kategorii
-    let categoryArray = [];
-    $('.categoriesList').each(function () {
-    categoryArray.push($(this).val());
-    });
-    let categoriesSelected = " ";
-    $('.categoriesList:checked').each(function () {
-    categoriesSelected += categoryArray[$(this).val()-1] + " ";
-    });
 
-    // Pobranie nazwy wybranej instytucji
-    // let tablica2 = [];
-    // $('.instytucje').each(function () {
-    //   tablica2.push($(this).val());
-    // });
-    let institutionName = $('.institutionsList:checked').val();
-    $('#categoryToDisplay').text(categoriesSelected);
-    let bags = $('#bags').val();
-    $('#bagNumber').text('Liczba worków: '+bags+ ' Kategorie: ');
-    $('#institutionSelected').text(institutionName);
-    let city = $('input[name=city', '#form').val();
-    let street = $('input[name=street', '#form').val();
-    let zipcode = $('input[name=zipcode', '#form').val();
-    let phone = $('input[name=phone', '#form').val();
-    let address = $('#fullAddress');
-    address.append("<li>" + street + "</li>").append("<li>" + zipcode + "</li>").append("<li>" + city + "</li>").append("<li>" + phone + "</li>");
-    let details = $('#fullDetails');
-    let date = $('input[name=pickUpDate', '#form').val();
-    let time = $('input[name=pickUpTime', '#form').val();
-    let comment = $('textarea[name=pickUpComment', '#form').val();
-    details.append("<li>" + date + "</li>").append("<li>" + time + "</li>").append("<li>" + comment + "</li>");
-    }
-</script>
 </head>
 <body>
 <header class="header--form-page">
@@ -124,7 +90,7 @@
                 <c:forEach items="${categories}" var="category">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="checkbox" name="categories" value="${category.id}"/>
+                            <input type="checkbox" name="category" value="${category.name}"/>
                             <span class="checkbox"></span>
                             <span class="description" class="categoriesList">${category.name}</span>
                         </label>
@@ -163,10 +129,10 @@
                 <c:forEach items="${institutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="radio" class="institutionsList" name="institutions" value="${institution.id}"/>
+                            <input type="radio" name="institutions"  value="${institution.name}" />
                             <span class="checkbox radio"></span>
                             <span class="description">
-                                  <div class="title">${institution.name}</div>
+                                  <div class="title" class="institutionsList">${institution.name}</div>
                                   <div class="subtitle">${institution.description}</div>
                             </span>
                         </label>
