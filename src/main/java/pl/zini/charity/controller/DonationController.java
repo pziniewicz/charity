@@ -21,7 +21,7 @@ import pl.zini.charity.service.UserService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/donation")
+@RequestMapping("/user/donation")
 public class DonationController {
 
     private final DonationService donationService;
