@@ -51,7 +51,7 @@ public class DonationController {
         return categoryService.findAll();
     }
 
-    @ModelAttribute
+    @ModelAttribute("loggedUser")
     public User loggedUser() {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userService.findUserByEmail(email);
