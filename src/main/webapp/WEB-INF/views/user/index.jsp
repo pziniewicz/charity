@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -70,7 +71,15 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <c:if test="${not empty loggedUser}">
+        <security:authorize access="hasRole('ROLE_USER')">
+            <a href="/user/donation" class="btn btn--large">Oddaj dary</a>
+        </security:authorize>
+    </c:if>
+    <c:if test="${empty loggedUser}">
+        <a href="/register" class="btn btn--large">Załóż konto</a>
+    </c:if>
+
 </section>
 
 <section class="about-us">
