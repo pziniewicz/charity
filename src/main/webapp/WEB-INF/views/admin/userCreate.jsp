@@ -19,16 +19,21 @@
 </header>
 <section class="login-page">
     <table>
-        <form:form method="post" modelAttribute="institution">
+        <form:form method="post" modelAttribute="user">
             <tr>
-                <td><form:label path="name">Nazwa:</form:label></td>
-                <td><form:input path="name"/></td>
-                <td><form:errors path="name" cssClass="error" element="div" /></td>
+                <td><form:label path="firstName">Imię:</form:label></td>
+                <td><form:input path="firstName"/></td>
+                <td><form:errors path="firstName" cssClass="error" element="div" /></td>
             </tr>
             <tr>
-                <td><form:label path="description">Content:</form:label></td>
-                <td><form:textarea path="description"/></td>
-                <td><form:errors path="description" cssClass="error" element="div" /></td>
+                <td><form:label path="lastName">Nazwisko:</form:label></td>
+                <td><form:textarea path="lastName"/></td>
+                <td><form:errors path="lastName" cssClass="error" element="div" /></td>
+            </tr>
+            <tr>
+                <td><form:label path="email">Email:</form:label></td>
+                <td><form:textarea path="email"/></td>
+                <td><form:errors path="email" cssClass="error" element="div" /></td>
             </tr>
             <tr>
                 <td><input type="submit" value="Save"></td>

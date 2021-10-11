@@ -184,10 +184,13 @@ function data() {
     $('.categoriesList:checked').each(function () {
         categoriesSelected += categoryArray[$(this).val() - 1] + " ";
     });
+
     let institutionName = $('.institutionsList:checked').val();
     $('#categoryToDisplay').text(categoriesSelected);
+
     let bags = $('#bags').val();
     $('#bagNumber').text('Liczba worków: ' + bags + ' Kategorie: ');
+
     $('#institutionSelected').text(institutionName);
     let address = $('#fullAddress');
     let city = $('input[name=city', '#form').val();
@@ -195,6 +198,7 @@ function data() {
     let zipcode = $('input[name=zipcode', '#form').val();
     let phone = $('input[name=phone', '#form').val();
     address.append("<li>" + street + "</li>").append("<li>" + zipcode + "</li>").append("<li>" + city + "</li>").append("<li>" + phone + "</li>");
+
     let details = $('#fullDetails');
     let date = $('input[name=pickUpDate', '#form').val();
     let time = $('input[name=pickUpTime', '#form').val();
