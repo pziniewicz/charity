@@ -18,22 +18,29 @@
     </nav>
 </header>
 <section class="login-page">
+    <a href="create">+ dodaj Organizacje</a><br/>
     <table>
-        <form:form method="post" modelAttribute="institution">
+        <tr>
+            <th>Id</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Email</th>
+            <th>Rola</th>
+            <th>Aktywny</th>
+            <th>Action</th>
+        </tr>
+        <c:forEach items="${users}" var="u">
             <tr>
-                <td><form:label path="name">Nazwa:</form:label></td>
-                <td><form:input path="name"/></td>
-                <td><form:errors path="name" cssClass="error" element="div" /></td>
+                <td>${u.id}</td>
+                <td>${u.firstName}</td>
+                <td>${u.lastName}</td>
+                <td>${u.email}</td>
+                <td>${u.role}</td>
+                <td>${u.enabled}</td>
+                <td><a href="/admin/user/create?id=${u.id}">edytuj</a></td>
+                <td><a href="/admin/user/delete/${u.id}">kasuj</a></td>
             </tr>
-            <tr>
-                <td><form:label path="description">Content:</form:label></td>
-                <td><form:textarea path="description"/></td>
-                <td><form:errors path="description" cssClass="error" element="div" /></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Save"></td>
-            </tr>
-        </form:form>
+        </c:forEach>
     </table>
 </section>
 

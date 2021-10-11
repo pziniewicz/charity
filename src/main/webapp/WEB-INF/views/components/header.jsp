@@ -8,6 +8,9 @@
         <security:authorize access="hasRole('ROLE_ADMIN')">
             <li><a href="/admin/institution" class="btn btn--without-border active" style="background: cadetblue">Admin-organizacje</a></li>
         </security:authorize>
+        <security:authorize access="hasRole('ROLE_ADMIN')">
+            <li><a href="/admin/users" class="btn btn--without-border active" style="background: cadetblue">Admin-użytkownicy</a></li>
+        </security:authorize>
         <li><a href="#" class="btn btn--without-border active"><spring:message code="pages.navbar.button.start"/></a></li>
         <li><a href="#stats" class="btn btn--without-border"><spring:message code="pages.navbar.button.project_description"/></a></li>
         <li><a href="#about-us" class="btn btn--without-border"><spring:message code="pages.navbar.button.about"/></a></li>

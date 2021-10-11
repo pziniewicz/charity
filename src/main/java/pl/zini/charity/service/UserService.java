@@ -6,6 +6,7 @@ import pl.zini.charity.model.User;
 import pl.zini.charity.repository.UserRepository;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -31,5 +32,13 @@ public class UserService {
 
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    public void delete(User user) {
+        userRepository.delete(user);
     }
 }
