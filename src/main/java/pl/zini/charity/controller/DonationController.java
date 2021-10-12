@@ -69,8 +69,6 @@ public class DonationController {
             return "user/form";
         }
         donationService.save(donation);
-        return "user/form-confirmation";
+        return "user/formConfirmation";
     }
-
-
 }
