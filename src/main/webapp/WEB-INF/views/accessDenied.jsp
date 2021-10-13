@@ -9,14 +9,14 @@
 <head>
     <jsp:include page="components/head.jsp"/>
 
-    <title>Access Denied</title>
+    <title>Brak dostępu</title>
 </head>
 
 <body>
 
 <div class="users">
-    <h2>Nie masz dostępu do tej strony</h2>
+    <h2>Brak dostępu</h2>
 </div>
+<jsp:include page="components/footer.jsp"/>
 </body>
-
 </html>

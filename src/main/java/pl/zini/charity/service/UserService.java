@@ -1,6 +1,7 @@
 package pl.zini.charity.service;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.zini.charity.DTO.UserEditDTO;
@@ -85,5 +86,11 @@ public class UserService {
             userNewPassDTO = mapper.map(user.get(), UserNewPassDTO.class);
         }
         return userNewPassDTO;
+    }
+
+    public Boolean hasAuthority(Long id) {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByEmail(email);
+        return user.getId().equals(id);
     }
 }
