@@ -46,6 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/", "/user/**").hasAuthority("ROLE_USER")
                 .anyRequest()
                 .fullyAuthenticated()
+//                .and()
+//                .exceptionHandling().accessDeniedPage("/accessDenied.jsp")
                 .and()
                 .formLogin()
                 .loginPage("/login")

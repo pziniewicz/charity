@@ -8,7 +8,7 @@
 <html lang="pl">
 <head>
     <jsp:include page="components/head.jsp"/>
-    <title><spring:message code="pages.index.title"></title>
+    <title><spring:message code="pages.index.title"/></title>
 </head>
 <body>
 <header class="header--main-page">
