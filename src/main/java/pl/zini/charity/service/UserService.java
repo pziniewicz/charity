@@ -30,7 +30,7 @@ public class UserService {
         newUser.setFirstName(user.getFirstName());
         newUser.setLastName(user.getLastName());
         newUser.setEmail(user.getEmail());
-        if (user.getPassword() !=null) {
+        if (user.getPassword() != null) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
         newUser.setEnabled(true);
@@ -39,10 +39,12 @@ public class UserService {
     }
 
     public void save(User user) {
-        if (user.getPassword() !=null) {
+        if (user.getPassword() != null) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
-        user.setRole("ROLE_USER");
+        if (user.getRole() == null) {
+            user.setRole("ROLE_USER");
+        }
         userRepository.save(user);
     }
 
@@ -103,8 +105,11 @@ public class UserService {
     }
 
     public Boolean hasAuthority(Long id) {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        String email = SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getName();
         User user = userRepository.findByEmail(email);
-        return user.getId().equals(id);
+        return user.getId()
+                .equals(id);
     }
 }

@@ -27,7 +27,9 @@ public class AdminController {
 
     @ModelAttribute("loggedUser")
     public User loggedUser() {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        String email = SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getName();
         User user = userService.findUserByEmail(email);
         return user;
     }
@@ -62,9 +64,11 @@ public class AdminController {
     }
 
     @GetMapping("/users/delete/{id}")
-    public String deleteUser(@PathVariable String id) {
-        User user = userService.getById(Long.parseLong(id));
-        userService.delete(user);
+    public String deleteUser(@PathVariable Long id) {
+        if (id != loggedUser().getId()) {
+            User user = userService.getById(id);
+            userService.delete(user);
+        }
         return "redirect:/admin/users/";
     }
 
@@ -80,6 +84,22 @@ public class AdminController {
     public String deactivateUser(@PathVariable Long id) {
         User user = userService.getById(id);
         user.setEnabled(false);
+        userService.save(user);
+        return "redirect:/admin/users/";
+    }
+
+    @GetMapping("/users/toAdmin/{id}")
+    public String changeToAdmin(@PathVariable Long id) {
+        User user = userService.getById(id);
+        user.setRole("ROLE_ADMIN");
+        userService.save(user);
+        return "redirect:/admin/users/";
+    }
+
+    @GetMapping("/users/toUser/{id}")
+    public String changeToUser(@PathVariable Long id) {
+        User user = userService.getById(id);
+        user.setRole("ROLE_USER");
         userService.save(user);
         return "redirect:/admin/users/";
     }
@@ -113,8 +133,8 @@ public class AdminController {
     }
 
     @GetMapping("/institutions/delete/{id}")
-    public String deleteInstitution(@PathVariable String id) {
-        Institution institution = institutionService.getById(Long.parseLong(id));
+    public String deleteInstitution(@PathVariable Long id) {
+        Institution institution = institutionService.getById(id);
         institutionService.delete(institution);
         return "redirect:/admin/institutions/";
     }

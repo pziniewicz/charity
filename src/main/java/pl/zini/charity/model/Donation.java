@@ -44,4 +44,6 @@ public class Donation extends BaseClass{
 
     @ManyToOne
     private User user;
+
+    private Boolean isPickedUp;
 }
