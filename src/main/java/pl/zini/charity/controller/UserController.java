@@ -43,6 +43,9 @@ public class UserController {
 
     @GetMapping("/edit/{id}")
     public String updateUser(@PathVariable Long id, Model model) {
+        if(!userService.hasAuthority(id)) {
+            return "accessDenied";
+        }
         UserEditDTO user = userService.getUserToEditById(id);
         model.addAttribute("userEditDTO",user);
         return "user/userUpdate";
@@ -59,6 +62,9 @@ public class UserController {
 
     @GetMapping("/changePassword/{id}")
     public String changePassUser(@PathVariable Long id, Model model) {
+        if(!userService.hasAuthority(id)) {
+            return "accessDenied";
+        }
         UserNewPassDTO user = userService.getUserToChangePassById(id);
         model.addAttribute("userNewPassDTO",user);
         return "user/userNewPass";
