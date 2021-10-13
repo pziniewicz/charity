@@ -18,7 +18,7 @@
   </nav>
 </header>
 <section class="login-page">
-  <a href="create">+ dodaj Organizacje</a><br/>
+  <a href="create"><spring:message code="admin.institutions.addinstitution"></a><br/>
   <table>
     <tr>
       <th>Id</th>

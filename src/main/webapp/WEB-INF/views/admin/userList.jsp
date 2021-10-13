@@ -18,16 +18,16 @@
     </nav>
 </header>
 <section class="login-page">
-    <a href="/admin/users/create">+ dodaj Organizacje</a><br/>
+    <a href="/admin/users/create"><spring:message code="admin.institutions.addUser"/></a><br/>
     <table>
         <tr>
             <th>Id</th>
-            <th>Imię</th>
-            <th>Nazwisko</th>
+            <th><spring:message code="admin.institutions.name"/></th>
+            <th><spring:message code="admin.institutions.surname"/></th>
             <th>Email</th>
-            <th>Rola</th>
-            <th>Aktywny</th>
-            <th>Action</th>
+            <th><spring:message code="admin.institutions.role"/></th>
+            <th><spring:message code="admin.institutions.active"/></th>
+            <th><spring:message code="admin.institutions.action"/></th>
         </tr>
         <c:forEach items="${users}" var="u">
             <tr>
@@ -37,13 +37,13 @@
                 <td>${u.email}</td>
                 <td>${u.role}</td>
                 <td>${u.enabled}</td>
-                <td><a href="/admin/users/create?id=${u.id}">edytuj</a></td>
-                <td><a href="/admin/users/delete/${u.id}">kasuj</a></td>
+                <td><a href="/admin/users/create?id=${u.id}"><spring:message code="admin.edit"/></a></td>
+                <td><a href="/admin/users/delete/${u.id}"><spring:message code="admin.delete"/></a></td>
                 <c:if test="${u.enabled==true}">
-                    <td><a href="/admin/users/deactivate/${u.id}">dezaktywuj</a></td>
+                    <td><a href="/admin/users/deactivate/${u.id}"><spring:message code="admin.deactivate"/></a></td>
                 </c:if>
                 <c:if test="${u.enabled==false}">
-                    <td><a href="/admin/users/activate/${u.id}">aktywuj</a></td>
+                    <td><a href="/admin/users/activate/${u.id}"><spring:message code="admin.activate"/></a></td>
                 </c:if>
             </tr>
         </c:forEach>
