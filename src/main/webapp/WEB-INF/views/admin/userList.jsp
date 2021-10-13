@@ -18,7 +18,7 @@
     </nav>
 </header>
 <section class="login-page">
-    <a href="create">+ dodaj Organizacje</a><br/>
+    <a href="/admin/users/create">+ dodaj Organizacje</a><br/>
     <table>
         <tr>
             <th>Id</th>
@@ -37,8 +37,8 @@
                 <td>${u.email}</td>
                 <td>${u.role}</td>
                 <td>${u.enabled}</td>
-                <td><a href="/admin/user/create?id=${u.id}">edytuj</a></td>
-                <td><a href="/admin/user/delete/${u.id}">kasuj</a></td>
+                <td><a href="/admin/users/create?id=${u.id}">edytuj</a></td>
+                <td><a href="/admin/users/delete/${u.id}">kasuj</a></td>
             </tr>
         </c:forEach>
     </table>

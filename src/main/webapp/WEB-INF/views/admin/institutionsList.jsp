@@ -31,8 +31,8 @@
         <td>${i.id}</td>
         <td>${i.name}</td>
         <td>${i.description}</td>
-        <td><a href="/admin/institution/create?id=${i.id}">edytuj</a></td>
-        <td><a href="/admin/institution/delete/${i.id}">kasuj</a></td>
+        <td><a href="/admin/institutions/create?id=${i.id}">edytuj</a></td>
+        <td><a href="/admin/institutions/delete/${i.id}">kasuj</a></td>
       </tr>
     </c:forEach>
   </table>
