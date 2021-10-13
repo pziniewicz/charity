@@ -39,6 +39,12 @@
                 <td>${u.enabled}</td>
                 <td><a href="/admin/users/create?id=${u.id}">edytuj</a></td>
                 <td><a href="/admin/users/delete/${u.id}">kasuj</a></td>
+                <c:if test="${u.enabled==true}">
+                    <td><a href="/admin/users/deactivate/${u.id}">dezaktywuj</a></td>
+                </c:if>
+                <c:if test="${u.enabled==false}">
+                    <td><a href="/admin/users/activate/${u.id}">aktywuj</a></td>
+                </c:if>
             </tr>
         </c:forEach>
     </table>
