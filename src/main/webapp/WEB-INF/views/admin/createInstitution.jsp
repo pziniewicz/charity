@@ -21,17 +21,17 @@
     <table>
         <form:form method="post" modelAttribute="institution">
             <tr>
-                <td><form:label path="name">Nazwa:</form:label></td>
+                <td><form:label path="name"><spring:message code="admin.institutions.name"/>:</form:label></td>
                 <td><form:input path="name"/></td>
                 <td><form:errors path="name" cssClass="error" element="div" /></td>
             </tr>
             <tr>
-                <td><form:label path="description">Content:</form:label></td>
+                <td><form:label path="description"><spring:message code="admin.institutions.descripton"/>:</form:label></td>
                 <td><form:textarea path="description"/></td>
                 <td><form:errors path="description" cssClass="error" element="div" /></td>
             </tr>
             <tr>
-                <td><input type="submit" value="Save"></td>
+                <td><input type="submit" value="save"></td>
             </tr>
         </form:form>
     </table>
