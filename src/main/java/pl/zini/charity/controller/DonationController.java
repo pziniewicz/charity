@@ -71,4 +71,11 @@ public class DonationController {
         donationService.save(donation);
         return "user/formConfirmation";
     }
+
+    @RequestMapping("/list")
+    public String getAllDonations(Model model) {
+        List<Donation> donations = donationService.findAllByUserId(loggedUser().getId());
+        model.addAttribute("donations", donations);
+        return "user/donationList";
+    }
 }

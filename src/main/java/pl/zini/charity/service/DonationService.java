@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import pl.zini.charity.model.Donation;
 import pl.zini.charity.repository.DonationRepository;
 
+import java.util.List;
+
 @Service
 public class DonationService {
 
@@ -23,5 +25,10 @@ public class DonationService {
 
     public void save(Donation donation) {
         donationRepository.save(donation);
+    }
+
+    public List<Donation> findAllByUserId(Long id) {
+
+        return donationRepository.findAllByUserId(id);
     }
 }

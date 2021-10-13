@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pl.zini.charity.model.Donation;
 
+import java.util.List;
+
 @Repository
 public interface DonationRepository extends JpaRepository<Donation, Long> {
 
@@ -13,5 +15,7 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
 
     @Query(value = "SELECT count(*) AS count FROM donation", nativeQuery = true)
     Integer getNumberOfDonations();
+
+    List<Donation> findAllByUserId(Long userId);
 
 }
