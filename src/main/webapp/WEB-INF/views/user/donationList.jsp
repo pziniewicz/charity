@@ -18,21 +18,27 @@
     </nav>
 </header>
 <section class="login-page">
-    <a href="create"><spring:message code="admin.institutions.addinstitution"/></a><br/>
+    <a href="/user/donation">+ złóż nowy dar</a><br/>
     <table>
         <tr>
             <th>Id</th>
-            <th><spring:message code="admin.institutions.name"/></th>
-            <th><spring:message code="admin.institutions.descripton"/></th>
+            <th>Organizacja</th>
+            <th>Ilość</th>
+            <th>Data</th>
+            <th>Godzina</th>
+            <th>Komentarz</th>
             <th><spring:message code="admin.action"/></th>
         </tr>
-        <c:forEach items="${institutions}" var="i">
+        <c:forEach items="${donations}" var="d">
             <tr>
-                <td>${i.id}</td>
-                <td>${i.name}</td>
-                <td>${i.description}</td>
-                <td><a href="/admin/institutions/create?id=${i.id}"><spring:message code="admin.edit"/></a></td>
-                <td><a href="/admin/institutions/delete/${i.id}"><spring:message code="admin.edit"/></a></td>
+                <td>${d.id}</td>
+                <td>${d.institution.name}<br>${d.institution.description}</td>
+                <td>${d.quantity}</td>
+                <td>${d.pickUpDate}</td>
+                <td>${d.pickUpTime}</td>
+                <td>${d.pickUpComment}</td>
+                <td><a href="/admin/institutions/create?id=${u.id}"><spring:message code="admin.edit"/></a></td>
+                <td><a href="/admin/institutions/delete/${u.id}"><spring:message code="admin.edit"/></a></td>
             </tr>
         </c:forEach>
     </table>

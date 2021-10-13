@@ -73,9 +73,9 @@ public class DonationController {
     }
 
     @RequestMapping("/list")
-    public String getAllUsers(Model model) {
-        List<User> users = userService.findAll();
-        model.addAttribute("users", users);
-        return "admin/userList";
+    public String getAllDonations(Model model) {
+        List<Donation> donations = donationService.findAllByUserId(loggedUser().getId());
+        model.addAttribute("donations", donations);
+        return "user/donationList";
     }
 }

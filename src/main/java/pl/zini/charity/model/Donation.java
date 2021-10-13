@@ -41,4 +41,7 @@ public class Donation extends BaseClass{
     private LocalTime pickUpTime;
 
     private String pickUpComment;
+
+    @ManyToOne
+    private User user;
 }
