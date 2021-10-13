@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.zini.charity.DTO.UserEditDTO;
 import pl.zini.charity.model.Institution;
 import pl.zini.charity.model.User;
 import pl.zini.charity.service.InstitutionService;
@@ -14,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
@@ -32,11 +33,27 @@ public class UserController {
         return user;
     }
 
-    @GetMapping("/user")
+    @GetMapping("/")
     public String index(Model model) {
         List<Institution> institutions = institutionService.findAll();
         model.addAttribute("institutions", institutions);
         return "user/index";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String updateUser(@PathVariable Long id, Model model) {
+        UserEditDTO user = userService.getUserToEditById(id);
+        model.addAttribute("userEditDTO",user);
+        return "user/userUpdate";
+    }
+
+    @PostMapping("/edit")
+    public String updateUser(@Valid @ModelAttribute("userEditDTO") UserEditDTO user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "user/userUpdate";
+        }
+        userService.updateUser(user);
+        return "redirect:/";
     }
 
 
