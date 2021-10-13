@@ -1,12 +1,15 @@
 package pl.zini.charity.service;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.zini.charity.DTO.UserEditDTO;
 import pl.zini.charity.model.User;
 import pl.zini.charity.repository.UserRepository;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -41,5 +44,26 @@ public class UserService {
 
     public void delete(User user) {
         userRepository.delete(user);
+    }
+
+    public UserEditDTO getUserToEditById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        UserEditDTO userEditDTO = new UserEditDTO();
+        if (user.isPresent()) {
+            ModelMapper mapper = new ModelMapper();
+            userEditDTO = mapper.map(user.get(), UserEditDTO.class);
+        }
+        return userEditDTO;
+    }
+
+    public void updateUser(UserEditDTO editUser) {
+        Optional<User> optionalUser = userRepository.findById(editUser.getId());
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setLastName(editUser.getLastName());
+            user.setFirstName(editUser.getFirstName());
+            user.setEmail(editUser.getEmail());
+            userRepository.save(user);
+        }
     }
 }
