@@ -38,12 +38,20 @@
                 <td>${u.role}</td>
                 <td>${u.enabled}</td>
                 <td><a href="/admin/users/create?id=${u.id}"><spring:message code="admin.edit"/></a></td>
+                <c:if test="${loggedUser.id != u.id}">
                 <td><a href="/admin/users/delete/${u.id}"><spring:message code="admin.delete"/></a></td>
                 <c:if test="${u.enabled==true}">
                     <td><a href="/admin/users/deactivate/${u.id}"><spring:message code="admin.deactivate"/></a></td>
                 </c:if>
                 <c:if test="${u.enabled==false}">
                     <td><a href="/admin/users/activate/${u.id}"><spring:message code="admin.activate"/></a></td>
+                </c:if>
+                <c:if test="${u.role=='ROLE_USER'}">
+                    <td><a href="/admin/users/toAdmin/${u.id}">-->ADMIN</a></td>
+                </c:if>
+                <c:if test="${u.role=='ROLE_ADMIN'}">
+                    <td><a href="/admin/users/toUser/${u.id}">-->USER</a></td>
+                </c:if>
                 </c:if>
             </tr>
         </c:forEach>
