@@ -22,7 +22,7 @@
         <form:form method="post" modelAttribute="userNewPassDTO" action="/user/changePassword">
             <form:hidden path="id"/>
             <tr>
-                <td><form:label path="newPassword"><spring:message code="user.password"/>:</form:label></td>
+                <td><form:label path="newPassword"><spring:message code="user.newpassword"/>:</form:label></td>
                 <td><form:input path="newPassword"/></td>
                 <td><form:errors path="newPassword" cssClass="error" element="div" /></td>
             </tr>
