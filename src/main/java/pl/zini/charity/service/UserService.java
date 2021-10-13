@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.zini.charity.DTO.UserEditDTO;
+import pl.zini.charity.DTO.UserNewPassDTO;
 import pl.zini.charity.model.User;
 import pl.zini.charity.repository.UserRepository;
 
@@ -65,5 +66,24 @@ public class UserService {
             user.setEmail(editUser.getEmail());
             userRepository.save(user);
         }
+    }
+
+    public void userNewPass(UserNewPassDTO editUser) {
+        Optional<User> optionalUser = userRepository.findById(editUser.getId());
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setPassword(passwordEncoder.encode(editUser.getNewPassword()));
+            userRepository.save(user);
+        }
+    }
+
+    public UserNewPassDTO getUserToChangePassById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        UserNewPassDTO userNewPassDTO = new UserNewPassDTO();
+        if (user.isPresent()) {
+            ModelMapper mapper = new ModelMapper();
+            userNewPassDTO = mapper.map(user.get(), UserNewPassDTO.class);
+        }
+        return userNewPassDTO;
     }
 }

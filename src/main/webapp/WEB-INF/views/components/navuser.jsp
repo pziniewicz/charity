@@ -12,7 +12,7 @@
                     ${loggedUser.fullName}</a></b>
                 <ul class="dropdown">
                     <li><a href="/user/edit/${loggedUser.id}">Edytuj Profil</a></li>
-                    <li><a href="#">Zmień hasło</a></li>
+                    <li><a href="/user/changePassword/${loggedUser.id}">Zmień hasło</a></li>
                 </ul>
             </li>
         </security:authorize>
