@@ -71,4 +71,11 @@ public class DonationController {
         donationService.save(donation);
         return "user/formConfirmation";
     }
+
+    @RequestMapping("/list")
+    public String getAllUsers(Model model) {
+        List<User> users = userService.findAll();
+        model.addAttribute("users", users);
+        return "admin/userList";
+    }
 }

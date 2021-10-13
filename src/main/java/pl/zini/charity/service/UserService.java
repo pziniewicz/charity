@@ -38,6 +38,14 @@ public class UserService {
         userRepository.save(newUser);
     }
 
+    public void save(User user) {
+        if (user.getPassword() !=null) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
+        user.setRole("ROLE_USER");
+        userRepository.save(user);
+    }
+
     public User getById(Long id) {
         return userRepository.getById(id);
     }

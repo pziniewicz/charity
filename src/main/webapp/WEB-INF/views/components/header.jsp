@@ -12,6 +12,9 @@
         <security:authorize access="hasRole('ROLE_ADMIN')">
             <li><a href="/admin/users" class="btn btn--without-border active" style="background: cadetblue">Użytkownicy</a></li>
         </security:authorize>
+        <security:authorize access="hasRole('ROLE_USER')">
+            <li><a href="/user/donation/list" class="btn btn--without-border active" style="background: cadetblue">Przekazane dary</a></li>
+        </security:authorize>
         <li><a href="#stats" class="btn btn--without-border"><spring:message code="pages.navbar.button.project_description"/></a></li>
         <li><a href="#about-us" class="btn btn--without-border"><spring:message code="pages.navbar.button.about"/></a></li>
         <li><a href="#help" class="btn btn--without-border"><spring:message code="pages.navbar.button.fundations"/></a></li>
