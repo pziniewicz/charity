@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.zini.charity.DTO.UserEditDTO;
+import pl.zini.charity.DTO.UserNewPassDTO;
 import pl.zini.charity.model.Institution;
 import pl.zini.charity.model.User;
 import pl.zini.charity.service.InstitutionService;
@@ -56,5 +57,20 @@ public class UserController {
         return "redirect:/";
     }
 
+    @GetMapping("/changePassword/{id}")
+    public String changePassUser(@PathVariable Long id, Model model) {
+        UserNewPassDTO user = userService.getUserToChangePassById(id);
+        model.addAttribute("userNewPassDTO",user);
+        return "user/userNewPass";
+    }
+
+    @PostMapping("/changePassword")
+    public String changePassUser(@Valid @ModelAttribute("userNewPassDTO") UserNewPassDTO user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "user/userNewPass";
+        }
+        userService.userNewPass(user);
+        return "redirect:/";
+    }
 
 }
