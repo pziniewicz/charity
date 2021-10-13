@@ -56,6 +56,7 @@ public class AdminController {
         if (result.hasErrors()) {
             return "admin/userCreate";
         }
+        user.setEnabled(true);
         userService.save(user);
         return "redirect:/admin/users/";
     }
@@ -64,6 +65,22 @@ public class AdminController {
     public String deleteUser(@PathVariable String id) {
         User user = userService.getById(Long.parseLong(id));
         userService.delete(user);
+        return "redirect:/admin/users/";
+    }
+
+    @GetMapping("/users/activate/{id}")
+    public String activateUser(@PathVariable Long id) {
+        User user = userService.getById(id);
+        user.setEnabled(true);
+        userService.save(user);
+        return "redirect:/admin/users/";
+    }
+
+    @GetMapping("/users/deactivate/{id}")
+    public String deactivateUser(@PathVariable Long id) {
+        User user = userService.getById(id);
+        user.setEnabled(false);
+        userService.save(user);
         return "redirect:/admin/users/";
     }
 
