@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.zini.charity.DTO.UserRegisterDTO;
 import pl.zini.charity.model.Institution;
 import pl.zini.charity.model.User;
 import pl.zini.charity.service.DonationService;
@@ -51,13 +52,13 @@ public class HomeController {
 
     @GetMapping("/register")
     public String register(Long id, Model model) {
-        User user = new User();
-        model.addAttribute(user);
+        UserRegisterDTO user = new UserRegisterDTO();
+        model.addAttribute("userRegisterDTO", user);
         return "register";
     }
 
     @PostMapping("/register")
-    public String register(@Valid User user, BindingResult result) {
+    public String register(@Valid @ModelAttribute("userRegisterDTO") UserRegisterDTO user, BindingResult result) {
         if (result.hasErrors()) {
             return "register";
         }

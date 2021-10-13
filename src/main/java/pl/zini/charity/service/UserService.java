@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.zini.charity.DTO.UserEditDTO;
 import pl.zini.charity.DTO.UserNewPassDTO;
+import pl.zini.charity.DTO.UserRegisterDTO;
 import pl.zini.charity.model.User;
 import pl.zini.charity.repository.UserRepository;
 
@@ -24,12 +25,17 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void save(User user) {
+    public void save(UserRegisterDTO user) {
+        User newUser = new User();
+        newUser.setFirstName(user.getFirstName());
+        newUser.setLastName(user.getLastName());
+        newUser.setEmail(user.getEmail());
         if (user.getPassword() !=null) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
-        user.setRole("ROLE_USER");
-        userRepository.save(user);
+        newUser.setEnabled(true);
+        newUser.setRole("ROLE_USER");
+        userRepository.save(newUser);
     }
 
     public User getById(Long id) {
