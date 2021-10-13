@@ -18,21 +18,21 @@
   </nav>
 </header>
 <section class="login-page">
-  <a href="create"><spring:message code="admin.institutions.addinstitution"></a><br/>
+  <a href="create"><spring:message code="admin.institutions.addinstitution"/></a><br/>
   <table>
     <tr>
       <th>Id</th>
-      <th>Nazwa</th>
-      <th>Opis</th>
-      <th>Action</th>
+      <th><spring:message code="admin.institutions.name"/></th>
+      <th><spring:message code="admin.institutions.descripton"/></th>
+      <th><spring:message code="admin.action"/></th>
     </tr>
     <c:forEach items="${institutions}" var="i">
       <tr>
         <td>${i.id}</td>
         <td>${i.name}</td>
         <td>${i.description}</td>
-        <td><a href="/admin/institutions/create?id=${i.id}">edytuj</a></td>
-        <td><a href="/admin/institutions/delete/${i.id}">kasuj</a></td>
+        <td><a href="/admin/institutions/create?id=${i.id}"><spring:message code="admin.edit"/></a></td>
+        <td><a href="/admin/institutions/delete/${i.id}"><spring:message code="admin.edit"/></a></td>
       </tr>
     </c:forEach>
   </table>

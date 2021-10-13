@@ -21,12 +21,12 @@
     <table>
         <form:form method="post" modelAttribute="user">
             <tr>
-                <td><form:label path="firstName">Imię:</form:label></td>
+                <td><form:label path="firstName"><spring:message code="admin.users.name"/>:</form:label></td>
                 <td><form:input path="firstName"/></td>
                 <td><form:errors path="firstName" cssClass="error" element="div" /></td>
             </tr>
             <tr>
-                <td><form:label path="lastName">Nazwisko:</form:label></td>
+                <td><form:label path="lastName"><spring:message code="admin.users.surname"/>:</form:label></td>
                 <td><form:textarea path="lastName"/></td>
                 <td><form:errors path="lastName" cssClass="error" element="div" /></td>
             </tr>

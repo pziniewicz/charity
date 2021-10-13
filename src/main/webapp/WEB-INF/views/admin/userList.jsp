@@ -18,16 +18,16 @@
     </nav>
 </header>
 <section class="login-page">
-    <a href="/admin/users/create"><spring:message code="admin.institutions.addUser"/></a><br/>
+    <a href="/admin/users/create"><spring:message code="admin.users.addUser"/></a><br/>
     <table>
         <tr>
             <th>Id</th>
-            <th><spring:message code="admin.institutions.name"/></th>
-            <th><spring:message code="admin.institutions.surname"/></th>
+            <th><spring:message code="admin.users.name"/></th>
+            <th><spring:message code="admin.users.surname"/></th>
             <th>Email</th>
-            <th><spring:message code="admin.institutions.role"/></th>
-            <th><spring:message code="admin.institutions.active"/></th>
-            <th><spring:message code="admin.institutions.action"/></th>
+            <th><spring:message code="admin.users.role"/></th>
+            <th><spring:message code="admin.users.active"/></th>
+            <th><spring:message code="admin.action"/></th>
         </tr>
         <c:forEach items="${users}" var="u">
             <tr>
