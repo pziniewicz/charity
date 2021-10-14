@@ -193,7 +193,7 @@ function data() {
     $('.listOfInstitutions').each(function () {
         institutionArray.push($(this).val());
     });
-    let institutionSelected = institutionArray[$('.institutionsRadio:checked').val()];
+    let institutionSelected = institutionArray[$('.institutionsRadio:checked').val()-1];
     $('#institutionToDisplay').text(institutionSelected);
 
     let address = $('#fullAddress');
