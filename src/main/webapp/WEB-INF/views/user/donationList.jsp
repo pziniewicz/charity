@@ -18,7 +18,7 @@
     </nav>
 </header>
 <section class="login-page">
-    <a href="/user/donation">+ złóż nowy dar</a><br/>
+    <a href="/user/donation"><button>+ złóż nowy dar</button></a><br/>
     <table>
         <tr>
             <th>Id</th>

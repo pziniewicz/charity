@@ -18,7 +18,7 @@
   </nav>
 </header>
 <section class="login-page">
-  <a href="/admin/institutions/create"><spring:message code="admin.institutions.addinstitution"/></a><br/>
+  <a href="/admin/institutions/create"><button><spring:message code="admin.institutions.addinstitution"/></button></a><br/>
   <table>
     <tr>
       <th>Id</th>

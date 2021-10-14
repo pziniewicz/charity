@@ -18,7 +18,7 @@
     </nav>
 </header>
 <section class="login-page">
-    <a href="/user/donation/list">--> wróć do listy </a><br/>
+    <a href="/user/donation/list"><button>--> wróć do listy </button></a><br/>
     <table>
         <tr>
             <th></th>
