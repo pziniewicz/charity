@@ -18,14 +18,27 @@
                 </ul>
             </li>
         </security:authorize>
+        <li>
+            <a href="?lang=pl" class="btn btn--small"><img width="20px" height="20px" src="<c:url value="/resources/images/pl.png"/>"></a>
+        </li>
+        <li>
+            <a href="?lang=en" class="btn btn--small"><img width="20px" height="20px" src="<c:url value="/resources/images/en.png"/>"></a>
+        </li>
         <li><a href="/logout" class="btn btn--small btn--highlighted"><spring:message
                 code="pages.navbar.button.logout"/></a></li>
     </c:if>
     <c:if test="${empty loggedUser}">
         <li><a href="/login" class="btn btn--small btn--without-border"><spring:message
                 code="pages.navbar.button.login"/></a></li>
+        <li>
+            <a href="?lang=pl" class="btn btn--small"><img width="20px" height="20px" src="<c:url value="/resources/images/pl.png"/>"></a>
+        </li>
+        <li>
+            <a href="?lang=en" class="btn btn--small"><img width="20px" height="20px" src="<c:url value="/resources/images/en.png"/>"></a>
+        </li>
         <li><a href="/register" class="btn btn--small btn--highlighted"><spring:message
                 code="pages.navbar.button.register"/></a></li>
     </c:if>
+
 
 </ul>
