@@ -51,14 +51,14 @@ public class HomeController {
     }
 
     @GetMapping("/register")
-    public String register(Long id, Model model) {
-        User user = new User();
-        model.addAttribute( user);
+    public String register(Model model) {
+        UserRegisterDTO user = new UserRegisterDTO();
+        model.addAttribute("user",user);
         return "register";
     }
 
     @PostMapping("/register")
-    public String register(@Valid  User user, BindingResult result) {
+    public String register(@Valid UserRegisterDTO user, BindingResult result) {
         if (result.hasErrors()) {
             return "register";
         }

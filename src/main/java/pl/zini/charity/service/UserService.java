@@ -4,9 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.zini.charity.DTO.UserEditDTO;
-import pl.zini.charity.DTO.UserNewPassDTO;
-import pl.zini.charity.DTO.UserRegisterDTO;
+import pl.zini.charity.DTO.*;
 import pl.zini.charity.model.User;
 import pl.zini.charity.repository.UserRepository;
 
@@ -31,25 +29,37 @@ public class UserService {
         newUser.setLastName(user.getLastName());
         newUser.setEmail(user.getEmail());
         if (user.getPassword() != null) {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            newUser.setPassword(passwordEncoder.encode(user.getPassword()));
         }
         newUser.setEnabled(true);
         newUser.setRole("ROLE_USER");
         userRepository.save(newUser);
     }
 
-    public void save(User user) {
-        if (user.getPassword() != null) {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-        }
-        if (user.getRole() == null) {
-            user.setRole("ROLE_USER");
-        }
-        if (user.getEnabled() == null) {
-            user.setEnabled(true);
-        }
-        userRepository.save(user);
+    public void activate(UserActiveDTO user) {
+        User userToEdit = userRepository.getById(user.getId());
+        userToEdit.setEnabled(user.getEnabled());
+        userRepository.save(userToEdit);
     }
+
+    public void switchRole(UserSwitchRoleDTO user) {
+        User userToEdit = userRepository.getById(user.getId());
+        userToEdit.setRole(user.getRole());
+        userRepository.save(userToEdit);
+    }
+
+//    public void save(User user) {
+//        if (user.getPassword() != null) {
+//            user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        }
+//        if (user.getRole() == null) {
+//            user.setRole("ROLE_USER");
+//        }
+//        if (user.getEnabled() == null) {
+//            user.setEnabled(true);
+//        }
+//        userRepository.save(user);
+//    }
 
     public User getById(Long id) {
         return userRepository.getById(id);
