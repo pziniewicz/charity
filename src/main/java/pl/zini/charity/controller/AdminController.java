@@ -5,7 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.zini.charity.DTO.UserActiveDTO;
 import pl.zini.charity.DTO.UserEditDTO;
+import pl.zini.charity.DTO.UserRegisterDTO;
+import pl.zini.charity.DTO.UserSwitchRoleDTO;
 import pl.zini.charity.model.Institution;
 import pl.zini.charity.model.User;
 import pl.zini.charity.service.InstitutionService;
@@ -44,17 +47,16 @@ public class AdminController {
 
     @GetMapping("/users/create")
     public String createOrUpdateUser(Model model) {
-        User user = new User();
-        model.addAttribute(user);
+        UserRegisterDTO user = new UserRegisterDTO();
+        model.addAttribute("user",user);
         return "admin/userCreate";
     }
 
     @PostMapping("/users/create")
-    public String createOrUpdateUser(@Valid User user, BindingResult result) {
+    public String createOrUpdateUser(@Valid UserRegisterDTO user, BindingResult result) {
         if (result.hasErrors()) {
             return "admin/userCreate";
         }
-        user.setEnabled(true);
         userService.save(user);
         return "redirect:/admin/users/";
     }
@@ -72,7 +74,7 @@ public class AdminController {
             return "user/userUpdate";
         }
         userService.updateUser(user);
-        return "redirect:/users";
+        return "redirect:/admin/users/";
     }
 
     @GetMapping("/users/delete/{id}")
@@ -86,35 +88,47 @@ public class AdminController {
 
     @GetMapping("/users/activate/{id}")
     public String activateUser(@PathVariable Long id) {
-        User user = userService.getById(id);
+        UserActiveDTO user = new UserActiveDTO();
+        user.setId(id);
         user.setEnabled(true);
-        userService.save(user);
+        userService.activate(user);
         return "redirect:/admin/users/";
     }
 
     @GetMapping("/users/deactivate/{id}")
     public String deactivateUser(@PathVariable Long id) {
-        User user = userService.getById(id);
+        UserActiveDTO user = new UserActiveDTO();
+        user.setId(id);
         user.setEnabled(false);
-        userService.save(user);
+        userService.activate(user);
         return "redirect:/admin/users/";
     }
 
     @GetMapping("/users/toAdmin/{id}")
     public String changeToAdmin(@PathVariable Long id) {
-        User user = userService.getById(id);
+        UserSwitchRoleDTO user = new UserSwitchRoleDTO();
+        user.setId(id);
         user.setRole("ROLE_ADMIN");
-        userService.save(user);
+        userService.switchRole(user);
         return "redirect:/admin/users/";
     }
 
     @GetMapping("/users/toUser/{id}")
     public String changeToUser(@PathVariable Long id) {
-        User user = userService.getById(id);
+        UserSwitchRoleDTO user = new UserSwitchRoleDTO();
+        user.setId(id);
         user.setRole("ROLE_USER");
-        userService.save(user);
+        userService.switchRole(user);
         return "redirect:/admin/users/";
     }
+
+//    @GetMapping("/users/toUser/{id}")
+//    public String changeToUser(@PathVariable Long id) {
+//        User user = userService.getById(id);
+//        user.setRole("ROLE_USER");
+//        userService.save(user);
+//        return "redirect:/admin/users/";
+//    }
 
     @RequestMapping("/institutions")
     public String getAllInstitutions(Model model) {
