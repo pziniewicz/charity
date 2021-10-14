@@ -71,7 +71,7 @@ public class UserController {
     }
 
     @PostMapping("/changePassword")
-    public String changePassUser(@Valid @ModelAttribute("userNewPassDTO") UserNewPassDTO user, BindingResult result, Model model) {
+    public String changePasswordUser(@Valid @ModelAttribute("userNewPassDTO") UserNewPassDTO user, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "user/userNewPass";
         }

@@ -61,8 +61,8 @@
             <td>${donationItem.isPickedUp}</td>
         </tr>
         <tr>
-            <td></td>
             <c:if test="${donationItem.isPickedUp==false}">
+                <td></td>
                 <td><a href="/user/donation/pass/${donationItem.id}"><button>oznacz<br> odebrane</button></a></td>
             </c:if>
         </tr>
