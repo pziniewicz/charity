@@ -37,7 +37,7 @@
             </tr>
             <tr>
                 <td><form:label path="password">Hasło:</form:label></td>
-                <td><form:textarea path="password"/></td>
+                <td><form:password path="password"/></td>
                 <td><form:errors path="password" cssClass="error" element="div" /></td>
             </tr>
             <tr>
