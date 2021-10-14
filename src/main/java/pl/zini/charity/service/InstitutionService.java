@@ -28,6 +28,10 @@ public class InstitutionService {
     }
 
     public void save(Institution institution) {
+        if (institution.getDescription().length()<13 ||
+                !institution.getDescription().substring(0, 13).equals("Cel i misja: ")) {
+            institution.setDescription("Cel i misja: "+institution.getDescription());
+        }
         institutionRepository.save(institution);
     }
 
