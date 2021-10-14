@@ -24,42 +24,40 @@
             <th></th>
             <th>Informacje o darze</th>
         </tr>
-        <c:forEach items="${donation}" var="d">
             <tr>
                 <td>Id</td>
-                <td>${donation.id}</td>
+                <td>${donationItem.id}</td>
             </tr>
             <tr>
                 <td>Organizacja</td>
-                <td>${donation.institution.name}<br>${donation.institution.description}</td>
+                <td>${donationItem.institution.name}<br>${donationItem.institution.description}</td>
             </tr>
             <tr>
                 <td>Ilość worków</td>
-                <td>${donation.quantity}</td>
+                <td>${donationItem.quantity}</td>
             </tr>
             <tr>
                 <td>Data odbioru</td>
-                <td>${donation.pickUpDate}</td>
+                <td>${donationItem.pickUpDate}</td>
             </tr>
             <tr>
                 <td>Godzina odbioru</td>
-                <td>${donation.pickUpTime}</td>
+                <td>${donationItem.pickUpTime}</td>
             </tr>
             <tr>
                 <td>Komentarz</td>
-                <td>${donation.pickUpComment}</td>
+                <td>${donationItem.pickUpComment}</td>
             </tr>
             <tr>
                 <td>Odebrana?</td>
-                <td>${donation.isPickedUp}</td>
+                <td>${donationItem.isPickedUp}</td>
             </tr>
             <tr>
-                <td>Oznacz odebrane</td>
-                <c:if test="${donation.isPickedUp==false}">
-                    <td><a href="/user/donation/pass/${donation.id}">oznacz<br> odebrane</a></td>
+                <td></td>
+                <c:if test="${donationItem.isPickedUp==false}">
+                    <td><a href="/user/donation/pass/${donationItem.id}">oznacz<br> odebrane</a></td>
                 </c:if>
             </tr>
-        </c:forEach>
     </table>
 </section>
 
