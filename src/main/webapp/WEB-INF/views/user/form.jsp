@@ -79,7 +79,7 @@
         </c:if>
         <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
-        <form:form modelAttribute="donation" action="/donation" method="post" id="form" htmlEscape="true">
+        <form:form modelAttribute="donation" action="/user/donation" method="post" id="form" htmlEscape="true">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
@@ -87,10 +87,14 @@
                     <form:errors path="categories"/>
                 </div>
 
+                <div class="form-group form-group--checkbox">
+                    <form:checkboxes cssClass="checkbox" path="categories" items="${categories}" itemValue="id" itemLabel="name" />
+                </div>
+
                 <c:forEach items="${categories}" var="category">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="checkbox" name="category" value="${category.id}"/>
+                            <input type="checkbox" name="category" value="${category.name}"/>
                             <span class="checkbox"></span>
                             <span class="description" >${category.name}</span>
                             <input type="hidden" class="categoriesList" value="${category.name}">
@@ -136,7 +140,7 @@
                                   <div class="title">${institution.name}</div>
                                   <div class="subtitle">${institution.description}</div>
                             </span>
-                            <input type="hidden" class="institutionsList" value="${institution.name}">
+                            <input type="hidden" class="institutionsList" value="${institution.id}">
                         </label>
                     </div>
                 </c:forEach>

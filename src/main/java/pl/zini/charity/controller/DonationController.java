@@ -18,6 +18,7 @@ import pl.zini.charity.service.DonationService;
 import pl.zini.charity.service.InstitutionService;
 import pl.zini.charity.service.UserService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -59,15 +60,20 @@ public class DonationController {
     }
 
     @GetMapping
-    public String addDonation() {
+    public String addDonation(Model model) {
+//        Donation donation = new Donation();
+//        model.addAttribute("donation", donation);
         return "user/form";
     }
 
     @PostMapping
-    public String addDonation(@ModelAttribute("donation") Donation donation, BindingResult result, Model model) {
+    public String addDonation(@Valid @ModelAttribute("donation") Donation donation, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("errors");
             return "user/form";
         }
+        donation.setIsPickedUp(false);
+        donation.setUser(loggedUser());
         donationService.save(donation);
         return "user/formConfirmation";
     }
