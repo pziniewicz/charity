@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.zini.charity.DTO.UserEditDTO;
 import pl.zini.charity.model.Institution;
 import pl.zini.charity.model.User;
 import pl.zini.charity.service.InstitutionService;
@@ -42,13 +43,8 @@ public class AdminController {
     }
 
     @GetMapping("/users/create")
-    public String createOrUpdateUser(Long id, Model model) {
-        User user;
-        if (id != null) {
-            user = userService.getById(id);
-        } else {
-            user = new User();
-        }
+    public String createOrUpdateUser(Model model) {
+        User user = new User();
         model.addAttribute(user);
         return "admin/userCreate";
     }
@@ -61,6 +57,22 @@ public class AdminController {
         user.setEnabled(true);
         userService.save(user);
         return "redirect:/admin/users/";
+    }
+
+    @GetMapping("/users/edit/{id}")
+    public String updateUser(@PathVariable Long id, Model model) {
+        UserEditDTO user = userService.getUserToEditById(id);
+        model.addAttribute("userEditDTO",user);
+        return "user/userUpdate";
+    }
+
+    @PostMapping("/users/edit")
+    public String updateUser(@Valid @ModelAttribute("userEditDTO") UserEditDTO user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "user/userUpdate";
+        }
+        userService.updateUser(user);
+        return "redirect:/users";
     }
 
     @GetMapping("/users/delete/{id}")

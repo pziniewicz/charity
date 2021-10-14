@@ -18,46 +18,54 @@
     </nav>
 </header>
 <section class="login-page">
-    <a href="/user/donation/list">--> wróć do listy </a><br/>
+    <a href="/user/donation/list"><button>--> wróć do listy </button></a><br/>
     <table>
         <tr>
             <th></th>
             <th>Informacje o darze</th>
         </tr>
-            <tr>
-                <td>Id</td>
-                <td>${donationItem.id}</td>
-            </tr>
-            <tr>
-                <td>Organizacja</td>
-                <td>${donationItem.institution.name}<br>${donationItem.institution.description}</td>
-            </tr>
-            <tr>
-                <td>Ilość worków</td>
-                <td>${donationItem.quantity}</td>
-            </tr>
-            <tr>
-                <td>Data odbioru</td>
-                <td>${donationItem.pickUpDate}</td>
-            </tr>
-            <tr>
-                <td>Godzina odbioru</td>
-                <td>${donationItem.pickUpTime}</td>
-            </tr>
-            <tr>
-                <td>Komentarz</td>
-                <td>${donationItem.pickUpComment}</td>
-            </tr>
-            <tr>
-                <td>Odebrana?</td>
-                <td>${donationItem.isPickedUp}</td>
-            </tr>
-            <tr>
-                <td></td>
-                <c:if test="${donationItem.isPickedUp==false}">
-                    <td><a href="/user/donation/pass/${donationItem.id}">oznacz<br> odebrane</a></td>
-                </c:if>
-            </tr>
+        <tr>
+            <td>Id</td>
+            <td>${donationItem.id}</td>
+        </tr>
+        <tr>
+            <td>Organizacja</td>
+            <td>${donationItem.institution.name}<br>${donationItem.institution.description}</td>
+        </tr>
+        <tr>
+            <td>Kategorie</td>
+            <td>
+                <c:forEach var="category" items="${donationItem.categories}">
+                ${category.name} <br>
+                </c:forEach>
+            </td>
+        </tr>
+        <tr>
+            <td>Ilość worków</td>
+            <td>${donationItem.quantity}</td>
+        </tr>
+        <tr>
+            <td>Data odbioru</td>
+            <td>${donationItem.pickUpDate}</td>
+        </tr>
+        <tr>
+            <td>Godzina odbioru</td>
+            <td>${donationItem.pickUpTime}</td>
+        </tr>
+        <tr>
+            <td>Komentarz</td>
+            <td>${donationItem.pickUpComment}</td>
+        </tr>
+        <tr>
+            <td>Odebrana?</td>
+            <td>${donationItem.isPickedUp}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <c:if test="${donationItem.isPickedUp==false}">
+                <td><a href="/user/donation/pass/${donationItem.id}"><button>oznacz<br> odebrane</button></a></td>
+            </c:if>
+        </tr>
     </table>
 </section>
 

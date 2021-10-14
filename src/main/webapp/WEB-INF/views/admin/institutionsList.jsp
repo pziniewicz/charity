@@ -18,7 +18,7 @@
   </nav>
 </header>
 <section class="login-page">
-  <a href="create"><spring:message code="admin.institutions.addinstitution"/></a><br/>
+  <a href="/admin/institutions/create"><button><spring:message code="admin.institutions.addinstitution"/></button></a><br/>
   <table>
     <tr>
       <th>Id</th>
@@ -31,8 +31,8 @@
         <td>${i.id}</td>
         <td>${i.name}</td>
         <td>${i.description}</td>
-        <td><a href="/admin/institutions/create?id=${i.id}"><spring:message code="admin.edit"/></a></td>
-        <td><a href="/admin/institutions/delete/${i.id}"><spring:message code="admin.edit"/></a></td>
+        <td><a href="/admin/institutions/create?id=${i.id}"><button><spring:message code="admin.edit"/></button></a></td>
+        <td><a href="/admin/institutions/delete/${i.id}"><button><spring:message code="admin.delete"/></button></a></td>
       </tr>
     </c:forEach>
   </table>
