@@ -58,8 +58,6 @@ public class DonationController {
 
     @GetMapping
     public String addDonation(Model model) {
-//        Donation donation = new Donation();
-//        model.addAttribute("donation", donation);
         return "user/form";
     }
 
@@ -88,5 +86,12 @@ public class DonationController {
         List<Donation> donations = donationService.findAllByUserId(loggedUser().getId());
         model.addAttribute("donations", donations);
         return "user/donationList";
+    }
+
+    @GetMapping("/item/{id}")
+    public String getDonation(@PathVariable Long id, Model model) {
+        Donation donationItem = donationService.getByIdAndUserId(id, loggedUser().getId());
+        model.addAttribute("donationItem", donationItem);
+        return "user/donation";
     }
 }

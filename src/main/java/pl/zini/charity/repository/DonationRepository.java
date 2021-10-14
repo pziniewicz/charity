@@ -19,4 +19,6 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
     @Query(value = "SELECT * FROM donation where user_id= :userId ORDER BY is_picked_up desc, pick_up_date asc", nativeQuery = true)
     List<Donation> findAllByUserId(Long userId);
 
+    Donation getByIdAndUserId(Long id, Long userId);
+
 }
