@@ -7,10 +7,10 @@
 <ul class="nav--actions">
     <c:if test="${not empty loggedUser}">
         <security:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
-            <li class="logged-user"><spring:message code="user.welcome"/>, <b>
-<%--                <a href="/user/edit" class="btn btn--small btn--without-border">--%>
+            <li class="logged-user btn btn--small btn--without-border"><spring:message code="user.welcome"/>, <b>
+                    <%--                <a href="/user/edit" class="btn btn--small btn--without-border">--%>
                     ${loggedUser.fullName}
-<%--                </a>--%>
+                    <%--                </a>--%>
             </b>
                 <ul class="dropdown">
                     <li><a href="/user/edit/${loggedUser.id}">Edytuj Profil</a></li>

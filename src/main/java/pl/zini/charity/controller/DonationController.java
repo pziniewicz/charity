@@ -39,12 +39,12 @@ public class DonationController {
         return new Donation();
     }
 
-    @ModelAttribute("institutions")
+    @ModelAttribute("institutionList")
     public List<Institution> institutions() {
         return institutionService.findAll();
     }
 
-    @ModelAttribute("categories")
+    @ModelAttribute("categoriesList")
     public List<Category> categories() {
         return categoryService.findAll();
     }

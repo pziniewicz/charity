@@ -176,22 +176,26 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function data() {
+    let bags = $('#bags').val();
+    $('#bagNumber').text(bags);
+
     let categoryArray = [];
-    $('.categoriesList').each(function () {
+    $('.listOfCategories').each(function () {
         categoryArray.push($(this).val());
     });
     let categoriesSelected = " ";
-    $('.categoriesList:checked').each(function () {
-        categoriesSelected += categoryArray[$(this).val() - 1] + " ";
+    $('.categoriesCheckbox:checked').each(function () {
+        categoriesSelected += categoryArray[$(this).val()-1] + " ";
     });
-
-    let institutionName = $('.institutionsList:checked').val();
     $('#categoryToDisplay').text(categoriesSelected);
 
-    let bags = $('#bags').val();
-    $('#bagNumber').text('Liczba worków: ' + bags + ' Kategorie: ');
+    let institutionArray = [];
+    $('.listOfInstitutions').each(function () {
+        institutionArray.push($(this).val());
+    });
+    let institutionSelected = institutionArray[$('.institutionsRadio:checked').val()];
+    $('#institutionToDisplay').text(institutionSelected);
 
-    $('#institutionSelected').text(institutionName);
     let address = $('#fullAddress');
     let city = $('input[name=city', '#form').val();
     let street = $('input[name=street', '#form').val();
