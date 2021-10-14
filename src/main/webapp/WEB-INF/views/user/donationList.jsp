@@ -23,6 +23,7 @@
         <tr>
             <th>Id</th>
             <th>Organizacja</th>
+            <th>Kategorie</th>
             <th>Ilość</th>
             <th>Data</th>
             <th>Godzina</th>
@@ -34,14 +35,19 @@
             <tr>
                 <td>${d.id}</td>
                 <td>${d.institution.name}<br>${d.institution.description}</td>
+                <td>
+                    <c:forEach var="category" items="${d.categories}">
+                        ${category.name} <br>
+                    </c:forEach>
+                </td>
                 <td>${d.quantity}</td>
                 <td>${d.pickUpDate}</td>
                 <td>${d.pickUpTime}</td>
                 <td>${d.pickUpComment}</td>
                 <td>${d.isPickedUp}</td>
-                <td><a href="/user/donation/item/${d.id}">szczegóły</a></td>
+                <td><a href="/user/donation/item/${d.id}"><button>szczegóły</button></a></td>
                 <c:if test="${d.isPickedUp==false}">
-                <td><a href="/user/donation/pass/${d.id}">oznacz<br> odebrane</a></td>
+                <td><a href="/user/donation/pass/${d.id}"><button>oznacz<br> odebrane</button></a></td>
                 </c:if>
             </tr>
         </c:forEach>

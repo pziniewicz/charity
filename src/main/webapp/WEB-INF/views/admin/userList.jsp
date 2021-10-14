@@ -37,20 +37,20 @@
                 <td>${u.email}</td>
                 <td>${u.role}</td>
                 <td>${u.enabled}</td>
-                <td><a href="/admin/users/create?id=${u.id}"><spring:message code="admin.edit"/></a></td>
+                <td><a href="/admin/users/create?id=${u.id}"><button><spring:message code="admin.edit"/></button></a></td>
                 <c:if test="${loggedUser.id != u.id}">
-                <td><a href="/admin/users/delete/${u.id}"><spring:message code="admin.delete"/></a></td>
+                <td><a href="/admin/users/delete/${u.id}"><button><spring:message code="admin.delete"/></button></a></td>
                 <c:if test="${u.enabled==true}">
-                    <td><a href="/admin/users/deactivate/${u.id}"><spring:message code="admin.deactivate"/></a></td>
+                    <td><a href="/admin/users/deactivate/${u.id}"><button><spring:message code="admin.deactivate"/></button></a></td>
                 </c:if>
                 <c:if test="${u.enabled==false}">
-                    <td><a href="/admin/users/activate/${u.id}"><spring:message code="admin.activate"/></a></td>
+                    <td><a href="/admin/users/activate/${u.id}"><button><spring:message code="admin.activate"/></button></a></td>
                 </c:if>
                 <c:if test="${u.role=='ROLE_USER'}">
-                    <td><a href="/admin/users/toAdmin/${u.id}">-->ADMIN</a></td>
+                    <td><a href="/admin/users/toAdmin/${u.id}"><button>-->ADMIN</button></a></td>
                 </c:if>
                 <c:if test="${u.role=='ROLE_ADMIN'}">
-                    <td><a href="/admin/users/toUser/${u.id}">-->USER</a></td>
+                    <td><a href="/admin/users/toUser/${u.id}"><button>-->USER</button></a></td>
                 </c:if>
                 </c:if>
             </tr>
