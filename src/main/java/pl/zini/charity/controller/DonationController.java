@@ -4,10 +4,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.zini.charity.model.Category;
 import pl.zini.charity.model.Donation;
 import pl.zini.charity.model.Institution;
@@ -76,6 +73,14 @@ public class DonationController {
         donation.setUser(loggedUser());
         donationService.save(donation);
         return "user/formConfirmation";
+    }
+
+    @GetMapping("/pass/{id}")
+    public String dontaitonPassed(@PathVariable Long id) {
+        Donation donation = donationService.getById(id);
+        donation.setIsPickedUp(true);
+        donationService.save(donation);
+        return "redirect:/user/donation/list";
     }
 
     @RequestMapping("/list")

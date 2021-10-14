@@ -31,4 +31,8 @@ public class DonationService {
 
         return donationRepository.findAllByUserId(id);
     }
+
+    public Donation getById(Long id) {
+        return donationRepository.getOne(id);
+    }
 }
