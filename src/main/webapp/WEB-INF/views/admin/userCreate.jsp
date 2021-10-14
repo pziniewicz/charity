@@ -36,6 +36,11 @@
                 <td><form:errors path="email" cssClass="error" element="div" /></td>
             </tr>
             <tr>
+                <td><form:label path="password">Hasło:</form:label></td>
+                <td><form:textarea path="password"/></td>
+                <td><form:errors path="password" cssClass="error" element="div" /></td>
+            </tr>
+            <tr>
                 <td><input type="submit" value="Save"></td>
             </tr>
         </form:form>
