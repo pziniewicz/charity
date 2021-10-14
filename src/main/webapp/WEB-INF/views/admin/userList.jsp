@@ -37,7 +37,7 @@
                 <td>${u.email}</td>
                 <td>${u.role}</td>
                 <td>${u.enabled}</td>
-                <td><a href="/admin/users/create?id=${u.id}"><button><spring:message code="admin.edit"/></button></a></td>
+                <td><a href="/admin/users/edit/${u.id}"><button><spring:message code="admin.edit"/></button></a></td>
                 <c:if test="${loggedUser.id != u.id}">
                 <td><a href="/admin/users/delete/${u.id}"><button><spring:message code="admin.delete"/></button></a></td>
                 <c:if test="${u.enabled==true}">
