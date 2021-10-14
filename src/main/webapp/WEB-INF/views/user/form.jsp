@@ -80,6 +80,7 @@
         <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
         <form:form modelAttribute="donation" action="/user/donation" method="post" id="form" htmlEscape="true">
+
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
@@ -87,22 +88,12 @@
                     <form:errors path="categories"/>
                 </div>
 
-                <div class="form-group form-group--checkbox">
-                    <form:checkboxes cssClass="checkbox" path="categories" items="${categories}" itemValue="id" itemLabel="name" />
+                <div class="inputChecked">
+                    <form:checkboxes cssClass="categoriesCheckbox" delimiter="<br>" path="categories" items="${categoriesList}" itemValue="id" itemLabel="name" />
                 </div>
-
-                <c:forEach items="${categories}" var="category">
-                    <div class="form-group form-group--checkbox">
-                        <label>
-                            <input type="checkbox" name="category" value="${category.name}"/>
-                            <span class="checkbox"></span>
-                            <span class="description" >${category.name}</span>
-                            <input type="hidden" class="categoriesList" value="${category.name}">
-                        </label>
-                    </div>
+                <c:forEach items="${categoriesList}" var="category">
+                    <input type="hidden" class="listOfCategories" value="${category.name}"/>
                 </c:forEach>
-
-
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step">Dalej</button>
                 </div>
@@ -131,18 +122,12 @@
                     <form:errors path="institution"/>
                 </div>
 
-                <c:forEach items="${institutions}" var="institution">
-                    <div class="form-group form-group--checkbox">
-                        <label>
-                            <input type="radio" name="institutions"  value="${institution.id}" />
-                            <span class="checkbox radio"></span>
-                            <span class="description">
-                                  <div class="title">${institution.name}</div>
-                                  <div class="subtitle">${institution.description}</div>
-                            </span>
-                            <input type="hidden" class="institutionsList" value="${institution.id}">
-                        </label>
-                    </div>
+                <div class="inputChecked">
+                    <form:radiobuttons cssClass="institutionsRadio" delimiter="<br>" path="institution" items="${institutionList}" itemLabel="name" itemValue="id"/>
+                </div>
+
+                <c:forEach items="${institutionList}" var="institution">
+                    <input type="hidden" class="listOfInstitutions" value="${institution.name}"/>
                 </c:forEach>
 
                 <div class="form-group form-group--buttons">
@@ -213,15 +198,19 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text" id="bagNumber"></span>&nbsp
+                                <span class="summary--text">Liczba worków:  </span>
+                                <b><span class="summary--text" id="bagNumber"></span></b>&nbsp
+                            </li>
+                            <li>
                                 <span class="summary--text"></span>
-                                <span class="summary--text" id="categoryToDisplay"></span>
+                                <span class="summary--text">Kategorie:  </span>
+                                <b><span class="summary--text" id="categoryToDisplay"></span></b>
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
                                 <span class="summary--text">Dla fundacji:&nbsp</span>
-                                <span class="summary--text" id="institutionSelected"></span>
+                                <b><span class="summary--text" id="institutionToDisplay"></span></b>
                             </li>
                         </ul>
                     </div>
