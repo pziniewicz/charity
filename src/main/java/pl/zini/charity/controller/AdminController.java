@@ -122,14 +122,6 @@ public class AdminController {
         return "redirect:/admin/users/";
     }
 
-//    @GetMapping("/users/toUser/{id}")
-//    public String changeToUser(@PathVariable Long id) {
-//        User user = userService.getById(id);
-//        user.setRole("ROLE_USER");
-//        userService.save(user);
-//        return "redirect:/admin/users/";
-//    }
-
     @RequestMapping("/institutions")
     public String getAllInstitutions(Model model) {
         List<Institution> institutions = institutionService.findAll();
