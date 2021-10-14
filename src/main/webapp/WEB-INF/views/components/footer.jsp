@@ -5,15 +5,15 @@
 
 <footer>
     <div class="contact" id="contact">
-        <h2>Skontaktuj się z nami</h2>
-        <h3>Formularz kontaktowy</h3>
+        <h2><spring:message code="pages.contactus"/></h2>
+        <h3><spring:message code="pages.contactform"/></h3>
         <form class="form--contact">
             <div class="form-group form-group--50"><input type="text" name="name" placeholder="Imię"/></div>
             <div class="form-group form-group--50"><input type="text" name="surname" placeholder="Nazwisko"/></div>
 
             <div class="form-group"><textarea name="message" placeholder="Wiadomość" rows="1"></textarea></div>
 
-            <button class="btn" type="submit">Wyślij</button>
+            <button class="btn" type="submit"><spring:message code="pages.send"/></button>
         </form>
     </div>
     <div class="bottom-line">

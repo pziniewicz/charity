@@ -36,7 +36,7 @@
                 <td><form:errors path="email" cssClass="error" element="div" /></td>
             </tr>
             <tr>
-                <td><form:label path="password">Hasło:</form:label></td>
+                <td><form:label path="password"><spring:message code="user.password"/>:</form:label></td>
                 <td><form:password path="password"/></td>
                 <td><form:errors path="password" cssClass="error" element="div" /></td>
             </tr>
