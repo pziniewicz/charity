@@ -35,4 +35,8 @@ public class DonationService {
     public Donation getById(Long id) {
         return donationRepository.getOne(id);
     }
+
+    public Donation getByIdAndUserId(Long id, Long userId) {
+        return null;
+    }
 }

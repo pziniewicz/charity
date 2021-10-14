@@ -89,4 +89,11 @@ public class DonationController {
         model.addAttribute("donations", donations);
         return "user/donationList";
     }
+
+    @RequestMapping("/item/{id}")
+    public String getAllDonations(Model model, Long id) {
+        Donation donation = donationService.getByIdAndUserId(id, loggedUser().getId());
+        model.addAttribute("donation", donation);
+        return "user/donation";
+    }
 }
