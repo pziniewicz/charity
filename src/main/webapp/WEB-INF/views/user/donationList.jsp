@@ -18,17 +18,17 @@
     </nav>
 </header>
 <section class="login-page">
-    <a href="/user/donation"><button>+ złóż nowy dar</button></a><br/>
+    <a href="/user/donation"><button><spring:message code="user.newdonation"/></button></a><br/>
     <table>
         <tr>
             <th>Id</th>
-            <th>Organizacja</th>
-            <th>Kategorie</th>
-            <th>Ilość</th>
-            <th>Data</th>
-            <th>Godzina</th>
-            <th>Komentarz</th>
-            <th>Odebrany?</th>
+            <th><spring:message code="pages.institution"/></th>
+            <th><spring:message code="pages.category"/></th>
+            <th><spring:message code="pages.quantity"/></th>
+            <th><spring:message code="pages.date"/></th>
+            <th><spring:message code="pages.time"/></th>
+            <th><spring:message code="pages.comment"/></th>
+            <th><spring:message code="pages.pickedup"/></th>
             <th><spring:message code="admin.action"/></th>
         </tr>
         <c:forEach items="${donations}" var="d">
@@ -45,9 +45,9 @@
                 <td>${d.pickUpTime}</td>
                 <td>${d.pickUpComment}</td>
                 <td>${d.isPickedUp}</td>
-                <td><a href="/user/donation/item/${d.id}"><button>szczegóły</button></a></td>
+                <td><a href="/user/donation/item/${d.id}"><button><spring:message code="pages.details"/></button></a></td>
                 <c:if test="${d.isPickedUp==false}">
-                <td><a href="/user/donation/pass/${d.id}"><button>oznacz<br> odebrane</button></a></td>
+                <td><a href="/user/donation/pass/${d.id}"><button><spring:message code="pages.markpickedup"/></button></a></td>
                 </c:if>
             </tr>
         </c:forEach>

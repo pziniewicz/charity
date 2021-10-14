@@ -7,13 +7,13 @@
     <ul>
         <li><a href="/" class="btn btn--without-border active"><spring:message code="pages.navbar.button.start"/></a></li>
         <security:authorize access="hasRole('ROLE_ADMIN')">
-            <li><a href="/admin/institutions" class="btn btn--without-border active" style="background: cadetblue">Organizacje</a></li>
+            <li><a href="/admin/institutions" class="btn btn--without-border active" style="background: cadetblue"><spring:message code="pages.institutions"/></a></li>
         </security:authorize>
         <security:authorize access="hasRole('ROLE_ADMIN')">
-            <li><a href="/admin/users" class="btn btn--without-border active" style="background: cadetblue">Użytkownicy</a></li>
+            <li><a href="/admin/users" class="btn btn--without-border active" style="background: cadetblue"><spring:message code="pages.users"/></a></li>
         </security:authorize>
         <security:authorize access="hasRole('ROLE_USER')">
-            <li><a href="/user/donation/list" class="btn btn--without-border active">Przekazane dary</a></li>
+            <li><a href="/user/donation/list" class="btn btn--without-border active"><spring:message code="user.yourdonations"/> </a></li>
         </security:authorize>
         <li><a href="#stats" class="btn btn--without-border"><spring:message code="pages.navbar.button.project_description"/></a></li>
         <li><a href="#about-us" class="btn btn--without-border"><spring:message code="pages.navbar.button.about"/></a></li>
