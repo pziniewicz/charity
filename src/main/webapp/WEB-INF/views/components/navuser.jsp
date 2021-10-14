@@ -7,9 +7,11 @@
 <ul class="nav--actions">
     <c:if test="${not empty loggedUser}">
         <security:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
-            <li class="logged-user"><spring:message code="user.welcome"/>, <b><a href="/user/edit"
-                                                             class="btn btn--small btn--without-border">
-                    ${loggedUser.fullName}</a></b>
+            <li class="logged-user"><spring:message code="user.welcome"/>, <b>
+<%--                <a href="/user/edit" class="btn btn--small btn--without-border">--%>
+                    ${loggedUser.fullName}
+<%--                </a>--%>
+            </b>
                 <ul class="dropdown">
                     <li><a href="/user/edit/${loggedUser.id}">Edytuj Profil</a></li>
                     <li><a href="/user/changePassword/${loggedUser.id}">Zmień hasło</a></li>

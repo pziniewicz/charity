@@ -4,6 +4,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -13,7 +15,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "user")
 @EqualsAndHashCode(callSuper = true)
 @Entity
 public class Donation extends BaseClass{
@@ -42,7 +44,7 @@ public class Donation extends BaseClass{
 
     private String pickUpComment;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private User user;
 
     private Boolean isPickedUp;

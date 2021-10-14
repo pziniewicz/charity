@@ -5,7 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,6 +23,9 @@ public class User extends BaseClass {
     private String email;
     private String role;
     private Boolean enabled;
+
+    @OneToMany(mappedBy="user",cascade = CascadeType.ALL)
+    private List<Donation> donations;
 
     public String getFullName() {
         return firstName + " " + lastName;

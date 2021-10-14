@@ -4,10 +4,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.zini.charity.model.Category;
 import pl.zini.charity.model.Donation;
 import pl.zini.charity.model.Institution;
@@ -18,6 +15,7 @@ import pl.zini.charity.service.DonationService;
 import pl.zini.charity.service.InstitutionService;
 import pl.zini.charity.service.UserService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -59,17 +57,30 @@ public class DonationController {
     }
 
     @GetMapping
-    public String addDonation() {
+    public String addDonation(Model model) {
+//        Donation donation = new Donation();
+//        model.addAttribute("donation", donation);
         return "user/form";
     }
 
     @PostMapping
-    public String addDonation(@ModelAttribute("donation") Donation donation, BindingResult result, Model model) {
+    public String addDonation(@Valid @ModelAttribute("donation") Donation donation, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("errors");
             return "user/form";
         }
+        donation.setIsPickedUp(false);
+        donation.setUser(loggedUser());
         donationService.save(donation);
         return "user/formConfirmation";
+    }
+
+    @GetMapping("/pass/{id}")
+    public String dontaitonPassed(@PathVariable Long id) {
+        Donation donation = donationService.getById(id);
+        donation.setIsPickedUp(true);
+        donationService.save(donation);
+        return "redirect:/user/donation/list";
     }
 
     @RequestMapping("/list")

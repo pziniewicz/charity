@@ -45,6 +45,9 @@ public class UserService {
         if (user.getRole() == null) {
             user.setRole("ROLE_USER");
         }
+        if (user.getEnabled() == null) {
+            user.setEnabled(true);
+        }
         userRepository.save(user);
     }
 

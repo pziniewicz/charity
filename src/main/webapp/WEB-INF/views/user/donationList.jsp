@@ -39,8 +39,10 @@
                 <td>${d.pickUpTime}</td>
                 <td>${d.pickUpComment}</td>
                 <td>${d.isPickedUp}</td>
-                <td><a href="/admin/institutions/create?id=${u.id}">oznacz<br> odebrane</a></td>
                 <td><a href="/admin/institutions/delete/${u.id}">szczegóły</a></td>
+                <c:if test="${d.isPickedUp==false}">
+                <td><a href="/user/donation/pass/${d.id}">oznacz<br> odebrane</a></td>
+                </c:if>
             </tr>
         </c:forEach>
     </table>
