@@ -7,9 +7,10 @@
     <div class="contact" id="contact">
         <h2><spring:message code="pages.contactus"/></h2>
         <h3><spring:message code="pages.contactform"/></h3>
-        <form class="form--contact">
+        <form class="form--contact" action="/sendEmail" method="post">
             <div class="form-group form-group--50"><input type="text" name="name" placeholder="Imię"/></div>
             <div class="form-group form-group--50"><input type="text" name="surname" placeholder="Nazwisko"/></div>
+            <div class="form-group form-group--50"><input type="text" name="email" placeholder="Email"/></div>
 
             <div class="form-group"><textarea name="message" placeholder="Wiadomość" rows="1"></textarea></div>
 

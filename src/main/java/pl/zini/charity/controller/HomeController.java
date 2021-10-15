@@ -1,14 +1,13 @@
 package pl.zini.charity.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.zini.charity.DTO.UserRegisterDTO;
+import pl.zini.charity.mail.EmailServiceImpl;
 import pl.zini.charity.model.Institution;
 import pl.zini.charity.model.User;
 import pl.zini.charity.service.DonationService;
@@ -25,6 +24,9 @@ public class HomeController {
     private final InstitutionService institutionService;
     private final DonationService donationService;
     private final UserService userService;
+
+    @Autowired
+    private EmailServiceImpl emailService;
 
     public HomeController(InstitutionService institutionService, DonationService donationService, UserService userService) {
         this.institutionService = institutionService;
@@ -64,5 +66,12 @@ public class HomeController {
         }
         userService.save(user);
         return "redirect:/login";
+    }
+
+    @PostMapping("/sendEmail")
+    public String sendEmail(@RequestParam String name, @RequestParam String email, @RequestParam String message) {
+
+        emailService.sendSimpleMessage(email, name, message);
+        return "redirect:/";
     }
 }
