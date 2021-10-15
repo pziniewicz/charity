@@ -18,7 +18,7 @@
     </nav>
 </header>
 <section class="login-page">
-    <a href="/user/donation"><button><spring:message code="user.newdonation"/></button></a><br/>
+    <a href="/user/donation#form--steps"><button><spring:message code="user.newdonation"/></button></a><br/>
     <table>
         <tr>
             <th>Id</th>
