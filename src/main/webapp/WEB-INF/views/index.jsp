@@ -74,7 +74,7 @@
 
     <c:if test="${not empty loggedUser}">
         <security:authorize access="hasRole('ROLE_USER')">
-            <a href="/user/donation" class="btn btn--large"><spring:message code="pages.giveaway"/></a>
+            <a href="/user/donation#form--steps" class="btn btn--large"><spring:message code="pages.giveaway"/></a>
         </security:authorize>
     </c:if>
     <c:if test="${empty loggedUser}">

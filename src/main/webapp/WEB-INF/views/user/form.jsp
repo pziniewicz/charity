@@ -51,7 +51,7 @@
     </div>
 </header>
 
-<section class="form--steps">
+<section class="form--steps" id="form--steps">
     <div class="form--steps-instructions">
         <div class="form--steps-container">
             <h3>Ważne!</h3>
