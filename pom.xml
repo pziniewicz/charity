@@ -88,7 +88,7 @@
             <artifactId>modelmapper</artifactId>
             <version>2.4.2</version>
         </dependency>
-<!--        Heroku-->
+<!--        H2 database-->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
